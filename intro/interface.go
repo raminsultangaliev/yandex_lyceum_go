@@ -69,9 +69,9 @@ type LogLevel string
 const Error LogLevel = "Error"
 const Info LogLevel = "Info"
 
-func main() {
-	r := Rectangle{width: 10, height: 20}
-	c := Circle{radius: 6}
-	fmt.Println(CalculateArea(r))
-	fmt.Println(CalculateArea(c))
-}
+// func main() {
+// 	r := Rectangle{width: 10, height: 20}
+// 	c := Circle{radius: 6}
+// 	fmt.Println(CalculateArea(r))
+// 	fmt.Println(CalculateArea(c))
+// }

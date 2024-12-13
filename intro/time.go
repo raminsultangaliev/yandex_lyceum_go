@@ -71,7 +71,3 @@ func TimeAgo(pastTime time.Time) string {
 func NextWorkday(start time.Time) time.Time {
 	return start.Round(24 * time.Hour * 7)
 }
-
-func main() {
-	fmt.Println(NextWorkday(time.Now()))
-}

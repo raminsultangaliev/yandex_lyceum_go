@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"unicode"
 )
 
@@ -12,8 +11,4 @@ func isLatin(input string) bool {
 		}
 	}
 	return true
-}
-
-func main() {
-	fmt.Println(isLatin("abcdeа"))
 }

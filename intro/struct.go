@@ -95,8 +95,3 @@ func (t ToDoList) CountOverdueTasks() int {
 	}
 	return res
 }
-
-func main() {
-	e := Employee{"artem", "sigma", 51, 1}
-	e.CalculateTotalSalary()
-}

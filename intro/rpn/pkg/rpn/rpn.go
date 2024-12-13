@@ -1,4 +1,4 @@
-package main
+package rpn
 
 import (
 	"errors"
@@ -20,7 +20,7 @@ func isAllowedCharacter(r rune) bool {
 	return (r >= '0' && r <= '9')
 }
 
-func FindOpsAndExps(expression string, mode int) ([]rune, []string, error) {
+func findOpsAndExps(expression string, mode int) ([]rune, []string, error) {
 	depth := 0
 	from := 0
 	ops := []rune{}
@@ -55,7 +55,7 @@ func FindOpsAndExps(expression string, mode int) ([]rune, []string, error) {
 	return ops, exps, nil
 }
 
-func ExpToFloat(exp string) (float64, error) {
+func expToFloat(exp string) (float64, error) {
 	var res float64
 	var err error
 	if exp[0] == '(' {
@@ -72,15 +72,15 @@ func ExpToFloat(exp string) (float64, error) {
 	return res, nil
 }
 
-func ApplyOps(ops []rune, exps []string) (float64, error) {
+func applyOps(ops []rune, exps []string) (float64, error) {
 	var err error
-	res, err := ExpToFloat(exps[0])
+	res, err := expToFloat(exps[0])
 	if err != nil {
 		return 0, err
 	}
 
 	for i, op := range ops {
-		temp, err := ExpToFloat(exps[i + 1])
+		temp, err := expToFloat(exps[i + 1])
 		if err != nil {
 			return 0, err
 		}
@@ -109,13 +109,13 @@ func Calc(expression string) (float64, error) {
 	}
 
 	var err error
-	lowOps, lowExps, err := FindOpsAndExps(expression, 0)
+	lowOps, lowExps, err := findOpsAndExps(expression, 0)
 	if err != nil {
 		return 0, err
 	}
 
 	if len(lowOps) == 0 {
-		highOps, highExps, err := FindOpsAndExps(lowExps[0], 1)
+		highOps, highExps, err := findOpsAndExps(lowExps[0], 1)
 		if err != nil {
 			return 0, err
 		}
@@ -130,9 +130,9 @@ func Calc(expression string) (float64, error) {
 			}
 			return f, err
 		} else {
-			return ApplyOps(highOps, highExps)
+			return applyOps(highOps, highExps)
 		}
 	}
 
-	return ApplyOps(lowOps, lowExps)
-} 	
+	return applyOps(lowOps, lowExps)
+}

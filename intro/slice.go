@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func SliceCopy(nums []int) []int {
 	res := make([]int, len(nums))
 	for i := 0; i < len(nums); i++ {
@@ -40,15 +38,4 @@ func Mix(nums []int) []int {
 		res[2*i], res[2*i+1] = nums[i], nums[i+len(nums)/2]
 	}
 	return res
-}
-
-func main() {
-	n := 10
-	a := []int{-5, -5}
-	for i := 0; i < len(a); i++ {
-		fmt.Println(n)
-	}
-	fmt.Println(Clean(a, -5))
-	fmt.Println(Join([]int{1}, []int{-5, -5, 123}))
-	fmt.Println(Mix([]int{1, 2, 3, 4, 5, 6}))
 }
