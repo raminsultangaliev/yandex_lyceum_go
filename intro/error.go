@@ -116,25 +116,17 @@ func AreAnagrams(str1, str2 string) bool {
 		m2[r]++
 	}
 
-	for k, _ := range m1 {
+	for k := range m1 {
 		if m2[k] != m1[k] {
 			return false
 		}
 	}
 
-	for k, _ := range m2 {
+	for k := range m2 {
 		if m2[k] != m1[k] {
 			return false
 		}
 	}
 
 	return true
-}
-
-func main() {
-	str := "-"
-	fmt.Println(StrToInt(str))
-	fmt.Println(SumTwoIntegers("123", "6123"))
-	fmt.Println(SumTwoIntegers("-50", "2"))
-	fmt.Println(AreAnagrams("a", "A"))
 }

@@ -1,0 +1,6 @@
+2024/12/22 12:20:12 Hello world!
+2024/12/22 12:20:18 Hello world!
+2024/12/22 12:20:23 Hello world!
+2024/12/22 12:25:21 Hello world!
+time="2024-12-22T12:33:14+03:00" level=info msg="Hello world!"
+time="2024-12-22T12:34:16+03:00" level=info msg="Hello world!"

@@ -30,17 +30,17 @@ func (e Employee) CalculateTotalSalary() {
 	fmt.Printf("Total Salary: %.2f", e.salary+e.bonus)
 }
 
-type Student struct {
-	name            string
-	solvedProblems  int
-	scoreForOneTask float64
-	passingScore    float64
-}
+// type Student struct {
+// 	name            string
+// 	solvedProblems  int
+// 	scoreForOneTask float64
+// 	passingScore    float64
+// }
 
-func (s Student) IsExcellentStudent() bool {
-	score := s.scoreForOneTask * float64(s.solvedProblems)
-	return score >= s.passingScore
-}
+// func (s Student) IsExcellentStudent() bool {
+// 	score := s.scoreForOneTask * float64(s.solvedProblems)
+// 	return score >= s.passingScore
+// }
 
 type Task struct {
 	summary     string

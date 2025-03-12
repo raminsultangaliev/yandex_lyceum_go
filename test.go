@@ -2,48 +2,29 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"net/http"
 )
 
-type User struct {
-	ID    int
-	Name  string
-	Email string
-	Age   int
-}
-
-type Report struct {
-	User
-	ReportID int
-	Date     string
-}
-
-func NewUser(id int, name string, email string, age int) *User {
-	return &User{
-		ID:    id,
-		Name:  name,
-		Email: email,
-		Age:   age,
+func languageHandler(w http.ResponseWriter, r *http.Request) {
+	cookie, err := r.Cookie("lang")
+	if err != nil {
+		cookie = &http.Cookie{
+			Name:  "lang",
+			Value: "en",
+			Path:  "/",
+		}
+		http.SetCookie(w, cookie)
 	}
-}
 
-func CreateReport(user User, reportDate string) *Report {
-	return &Report{
-		User:     	user,
-		ReportID: int(time.Now().Unix()),
-		Date:     reportDate,
+	message := "Hello!" 
+	if cookie.Value == "ru" {
+		message = "Привет!"
 	}
+
+	fmt.Fprintf(w, message)
 }
 
-func PrintReport(report Report) {
-	fmt.Println(report.User.Name)
-	fmt.Println(report.Date)
-}
-
-func GenerateUserReports(users []User, reportDate string) []Report {
-	result := make([]Report, len(users))
-	for i, user := range users {
-		result[i] = *CreateReport(user, reportDate)
-	}
-	return result
-}
+func main() {
+	http.HandleFunc("/", languageHandler)
+	http.ListenAndServe("localhost:8080", nil)
+}	

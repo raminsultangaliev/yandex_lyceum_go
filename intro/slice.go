@@ -2,9 +2,7 @@ package main
 
 func SliceCopy(nums []int) []int {
 	res := make([]int, len(nums))
-	for i := 0; i < len(nums); i++ {
-		res[i] = nums[i]
-	}
+	copy(res, nums)
 	return res
 }
 
@@ -23,9 +21,7 @@ func Clean(nums []int, x int) []int {
 
 func Join(nums1, nums2 []int) []int {
 	res := make([]int, len(nums1)+len(nums2))
-	for i := 0; i < len(nums1); i++ {
-		res[i] = nums1[i]
-	}
+	copy(res, nums1)
 	for i := 0; i < len(nums2); i++ {
 		res[i+len(nums1)] = nums2[i]
 	}
